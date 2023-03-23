@@ -1,0 +1,23 @@
+Basic HTML
+Hyper Text Markweup Language
+<tagname>I am coder for python</tagname>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+<body>
+<h1>
+<p>
+<br
+
+HTML Editor
+
+<br> Is show for line break in a html docs.
+<hr> Also break the line and draw a vertical line.
+quote are important when using title attributes.
+
+LIST
+Order List <ol> <li>
+Unorder Liat <ul>
+Description List <dl> </dl>
