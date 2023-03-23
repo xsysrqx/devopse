@@ -1,0 +1,76 @@
+Sure! Here's a simple PHP script that can handle a login form with MySQL database server-side¹⁴¹⁵¹⁶:
+
+```php
+<?php
+session_start();
+include("config.php");
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  // username and password sent from form 
+  $myusername = mysqli_real_escape_string($db,$_POST['username']);
+  $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+  $sql = "SELECT id FROM admin WHERE username = '$myusername' and password = '$mypassword'";
+  $result = mysqli_query($db,$sql);
+  $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+  $active = $row['active'];
+  $count = mysqli_num_rows($result);
+  
+  // If result matched $myusername and $mypassword, table row must be 1 row
+  if($count == 1) {
+    $_SESSION['login_user'] = $myusername;
+    header("location: welcome.php");
+  }else {
+    $error = "Your Login Name or Password is invalid";
+  }
+}
+?>
+```
+
+This script uses PHP to connect the login form and MySQL server using connection (config.php) file. Whenever a user clicks the login button by entering his username and password, the PHP scripts work in the backend. First we use the include () function to include the config.php file. Then we use the $_SERVER["REQUEST_METHOD"] == "POST" method to check if the request method is POST. If it is POST then we get the username and password entered by the user using $_POST['username'] and $_POST['password'] respectively. Then we use mysqli_real_escape_string() function to prevent SQL injection attacks. After that we execute an SQL query to select id from admin where username is equal to entered username and password is equal to entered password. If there is only one row in result then we set session variable login_user equal to entered username and redirect user to welcome.php page otherwise we show an error message¹⁴¹⁵¹⁶.
+
+I hope this helps! Let me know if you have any other questions.
+
+Source: Conversation with Bing, 3/22/2023(1) PHP Login Form with MySQL database and form validation. https://phppot.com/php/php-login-form/ Accessed 3/22/2023.
+(2) Simple Login Form in PHP Page with MySQL Database. https://www.tutsmake.com/login-system-in-php-mysql-source-code-with-validation/ Accessed 3/22/2023.
+(3) PHP Login Form: Guide to Create a Login Form in PHP - Simplilearn.com. https://www.simplilearn.com/tutorials/php-tutorial/php-login-form Accessed 3/22/2023.
+(4) Very Simple HTML AJAX Login Page (Free Download!) - Code Boxx. https://code-boxx.com/simple-html-ajax-login-page/ Accessed 3/22/2023.
+(5) Server-Side Scripting Basics and Popular Back-End Languages - Upwork. https://www.upwork.com/resources/server-side-scripting-back-end-web-development-technology Accessed 3/22/2023.
+(6) Simple Login Form in PHP Page with MySQL Database. https://www.tutsmake.com/login-system-in-php-mysql-source-code-with-validation/ Accessed 3/22/2023.
+(7) C# Login form with User Authentication with SQL Server database. https://stackoverflow.com/questions/58187736/c-sharp-login-form-with-user-authentication-with-sql-server-database Accessed 3/22/2023.
+(8) How to Connect to Database in Javascript (Simple Examples) - Code Boxx. https://code-boxx.com/connect-database-javascript/ Accessed 3/22/2023.
+(9) Easiest way to store data from web site (on server side). https://stackoverflow.com/questions/13973963/easiest-way-to-store-data-from-web-site-on-server-side Accessed 3/22/2023.
+(10) PHP Login Form: Guide to Create a Login Form in PHP - Simplilearn.com. https://www.simplilearn.com/tutorials/php-tutorial/php-login-form Accessed 3/22/2023.
+(11) Very Simple HTML AJAX Login Page (Free Download!) - Code Boxx. https://code-boxx.com/simple-html-ajax-login-page/ Accessed 3/22/2023.
+(12) Simple Login Form in PHP Page with MySQL Database. https://www.tutsmake.com/login-system-in-php-mysql-source-code-with-validation/ Accessed 3/22/2023.
+(13) C# Login form with User Authentication with SQL Server database. https://stackoverflow.com/questions/58187736/c-sharp-login-form-with-user-authentication-with-sql-server-database Accessed 3/22/2023.
+(14) How to Connect to Database in Javascript (Simple Examples) - Code Boxx. https://code-boxx.com/connect-database-javascript/ Accessed 3/22/2023.
+(15) Login form using PHP & MYSQL | Simple Signin System. https://technosmarter.com/php/PHP-mysql-Login-form.html Accessed 3/22/2023.
+(16) Registration and Login System with PHP and MySQL - CodexWorld. https://www.codexworld.com/registration-login-system-php-mysql-session/ Accessed 3/22/2023.
+(17) Secure Login System with PHP and MySQL - CodeShack. https://codeshack.io/secure-login-system-php-mysql/ Accessed 3/22/2023.
+
+
+Sure! Here's an example of a simple HTML webpage that asks the user to login:
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+</head>
+<body>
+	<h2>Login Form</h2>
+	<form action="/action_page.php">
+	  <label for="username">Username:</label><br>
+	  <input type="text" id="username" name="username"><br>
+	  <label for="password">Password:</label><br>
+	  <input type="password" id="password" name="password"><br><br>
+	  <input type="submit" value="Submit">
+	</form> 
+</body>
+</html>
+
+```
+This code creates a simple login form with two input fields (one for username and one for password) and a submit button. When the user clicks the submit button, the form data is sent to a server-side script (in this case, `/action_page.php`) which can then process the data and perform any necessary actions (such as checking if the username and password are correct).
+
+You can customize this code to fit your specific needs by changing the form fields, adding additional fields (such as an email address or phone number), or modifying the server-side script to perform different actions.
+
+I hope this helps! Let me know if you have any other questions or if there's anything else I can help you with.
